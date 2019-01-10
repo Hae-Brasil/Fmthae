@@ -1,0 +1,124 @@
+#!/bin/bash
+#Equipe: [HAE]Hazardous Hacking
+#Criador: Matheus Santana
+#Colaboradores: Gabriel Souza
+# |||||
+reset
+########## [ CONFIGURAÇÃO ] #############
+export fil='/dev/null'
+export array=(`ls /dev/disk/by-label/`)
+export cm='/dev/'
+############# [ CORES ] #################
+Preto='\e[1;30m'
+Vermelho='\e[1;31m'
+Verde='\e[1;32m'
+Amarelo='\e[1;33m'
+Azul='\e[1;34m'
+Roxo='\e[1;35m'
+Ciano='\e[1;36m'
+Branco='\e[1;37m'
+Fundo='\e[1;7m'
+Normal='\e[0m'
+#########################################
+if [[ $1 == '--help' ]];then
+    echo -e ${Branco}"=== {Redes Sociais} ==="${Normal}
+echo -e ${Verde}"""> Aqui você encontra nossos meios de comunicação para oferecer suporte e vídeo-aulas.
+
++ Grupo Telegram: https://t.me/haehazardoushacking
++ Grupo Facebook: https://www.facebook.com/groups/haehazardoushacking
++ Página no Facebook: https://www.facebook.com/haehazardoushacking
++ Canal no Youtube: https://www.youtube.com/haebrasil
++ Canal secundário: https://www.youtube.com/channel/UCFYwt_Wz1VHpqVb2mFxg8aA
++ Canal no Vimeo: https://vimeo.com/systemxxi
+
+My Instagram: @matheussantanaxxi
+
+> Team: [HAE]™Hazardous Hacking"""${Normal};exit
+fi
+if [[ $UID -gt 0 ]];then
+    echo "Por favor, entre como super-usuário!";exit
+fi
+echo -e ${Verde}"""                                                         
+███████╗███╗   ███╗████████╗██╗  ██╗ █████╗ ███████╗
+██╔════╝████╗ ████║╚══██╔══╝██║  ██║██╔══██╗██╔════╝
+█████╗  ██╔████╔██║   ██║   ███████║███████║█████╗  
+██╔══╝  ██║╚██╔╝██║   ██║   ██╔══██║██╔══██║██╔══╝  
+██║     ██║ ╚═╝ ██║   ██║   ██║  ██║██║  ██║███████╗
+╚═╝     ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝"""${Normal}                                                                                                                                                                                                                                                                                                                                                                                                       
+echo -e ${Verde}"{Versão}:${Azul}3.0"${Normal}
+echo -e ${Verde}"{Equipe}:${Azul}[HAE]™Hazardous Hacking"${Normal}
+echo -e ${Verde}"{Criador}:${Azul} Matheus Santana"${Normal}
+
+function info(){
+	c=`echo ${#array[@]}`
+	echo "+=================================+"
+	x=($(ls /dev/ | grep -E sd[^a][12345678]))
+		for i in $(seq 0 $c);do
+		echo "> Device[$i]: ${array[$i]}"
+		done
+	echo "+=================================+"
+    echo -ne ${Branco}"Número do Dispositivo: "${Normal};read a
+    d=`echo ${x[$a]}`
+}
+function fat32(){
+	info
+	echo -ne ${Branco}"Nome p/Dispositivo: "${Normal};read e
+	umount $cm$d && mkfs.vfat -n $e $cm$d >> $fil
+	mount $cm$d >> $fil
+	echo -e ${Verde}"CONCLUIDO!"${Normal}
+}
+function ext4(){
+	info
+	echo -ne ${Branco}"Nome p/Dispositivo: "${Normal};read e
+	umount $cm$d && mkfs.ext4 -l $e $cm$d >> $fil
+	mount $cm$d >> fil
+	echo -e ${Verde}"CONCLUIDO!"${Normal}
+}
+function fat(){
+	info
+	echo -ne ${Branco}"Nome p/Dispositivo: "${Normal};read e
+	umount $cm$d && mkfs.fat -n $e $cm$d >> $fil
+	mount $cm$d >> $fil
+	echo -e ${Verde}"CONCLUIDO!"${Normal}
+}
+function ntfs(){
+	info
+	echo -ne ${Branco}"Nome p/Dispositivo: "${Normal};read e
+	umount $cm$d && mkfs.ntfs -L $e $cm$d >> $fil
+	mount $cm$d >> $fil
+	echo -e ${Verde}"CONCLUIDO!"${Normal}
+}
+function exfat(){
+	info
+	echo -ne ${Branco}"Nome p/Dispositivo: "${Normal};read e
+	umount $cm$d && mkfs.exfat -n $e $cm$d >> $fil
+	mount $cm$d >> $fil
+	echo -e ${Verde}"CONCLUIDO!"${Normal}
+}
+function dep(){
+	if [[ ! `which gparted` ]];then
+		echo -e ${Vermelho}"Instalando dependências..."${Normal}
+		apt-get install gparted >> $fil
+	elif [[ ! `which bash` ]];then
+			apt-get install bash >> $fil 
+	fi
+}
+function sair(){
+	echo -e ${Verde}"Agradecemos por nos escolher!"${Normal}
+	exit 0
+}
+dep
+echo -e ${Azul}"+${Branco}=================================${Azul}+"${Normal}
+echo -e ${Branco}"| +[1] Fat32-[R]      [4] Ntfs  + |"${Normal}
+echo -e ${Branco}"| +[2] Ext4           [5] Exfat + |"${Normal}
+echo -e ${Branco}"| +[3] Fat            [6] Sair  ${Vermelho}+ ${Branco}|"${Normal}
+echo -e ${Azul}"+${Branco}=================================${Azul}+"${Normal}
+echo -ne ${Ciano}"{$USER}${Branco}[Opção]: "${Normal};read i 
+case $i in 
+    1) fat32;;
+    2) ext4;;
+    3) fat;;
+    4) ntfs;;
+    5) exfat;;
+    6) sair;;
+esac
