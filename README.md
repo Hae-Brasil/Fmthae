@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/20159378/50998972-db513f00-1507-11e9-8b0b-ca440cfb0ec5.png" height="400" widht="400">
 <h2>Suporte</h2>
 O Fmthae oferece uma lista de todos seus dispositivos conectados ás portas USB, e suporte a vários tipos de formatos, veja abaixo.
-<h4>Fat32 <br>
+<h4>FAT32 <br>
 EXT4<br>
 NTFS<br>
 FAT<br>
