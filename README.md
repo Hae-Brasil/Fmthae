@@ -8,4 +8,8 @@ Ext4<br>
 Ntfs<br>
 Fat<br>
 Exfat</h4>
+<h2>Ajuda</h2>
+O script não possui um paramêtro para uma ajuda direta, porém chamando o paramêtro --help você encontra nossas redes sociais para poder tirar suas dúvidas com nossos administradores, ou membros que entende de programação Shell Script.
+
+<b>./fmthae --help</b>
 
