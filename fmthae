@@ -1,7 +1,7 @@
 #!/bin/bash
 #Equipe: [HAE]Hazardous Hacking
 #Criador: Matheus Santana
-#Colaboradores: Gabriel Souza
+#Colaborador: Gabriel Souza
 # |||||
 reset
 ########## [ CONFIGURAÇÃO ] #############
@@ -47,7 +47,7 @@ echo -e ${Verde}"""
 ╚═╝     ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝"""${Normal}                                                                                                                                                                                                                                                                                                                                                                                                       
 echo -e ${Verde}"{Versão}:${Azul}3.0"${Normal}
 echo -e ${Verde}"{Equipe}:${Azul}[HAE]™Hazardous Hacking"${Normal}
-echo -e ${Verde}"{Criador}:${Azul} Matheus Santana"${Normal}
+echo -e ${Verde}"{Criador}:${Azul}Matheus Santana"${Normal}
 
 function info(){
 	c=`echo ${#array[@]}`
@@ -100,7 +100,7 @@ function dep(){
 		echo -e ${Vermelho}"Instalando dependências..."${Normal}
 		apt-get install gparted >> $fil
 	elif [[ ! `which bash` ]];then
-			apt-get install bash >> $fil 
+		apt-get install bash >> $fil 
 	fi
 }
 function sair(){
