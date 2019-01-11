@@ -4,11 +4,11 @@
 <h2>Suporte</h2>
 A ferramenta lista todos seus dispositivos conectados as portas USB para que não haja confusão na hora do processo, ele também te suporte a vários tipos de formatos, listados abaixo.
 <ul>
-  <li><h4>FAT32</li>
+  <li>FAT32</li>
    <li>EXT4</li>
    <li>NTFS</li>
-   <li>FAT<br>
-   <li>EXFAT</h4>
+   <li>FAT</li>
+   <li>EXFAT</li>
 </ul>
 <h2>Ajuda</h2>
 O script não possui um paramêtro para uma ajuda direta, porém chamando a função --help você encontra nossas redes sociais para poder tirar suas dúvidas com nossos administradores, ou membros que entende de programação Shell Script.
